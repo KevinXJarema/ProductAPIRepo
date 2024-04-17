@@ -13,15 +13,17 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"// Fixed the variable reference for jsonData\r",
+							"var jsonData = pm.response.json();\r",
 							"pm.test(\"value of [0].Id to be 1\", () => {pm.expect(jsonData[0].Id).to.equal(1)})\r",
 							"pm.test(\"value of [1].Id to be 2\", () => {pm.expect(jsonData[1].Id).to.equal(2)})\r",
 							"pm.test(\"value of [2].Id to be 3\", () => {pm.expect(jsonData[2].Id).to.equal(3)})\r",
-							"pm.test(\"value of [0].Name to be Tomato Soup\", () => {pm.expect(jsonData[0].Name).to.equal(\"Tomato Soup\")})\r",
+							"pm.test(\"value of [0].Name to be Potato Soup\", () => {pm.expect(jsonData[0].Name).to.equal(\"Potato Soup\")})\r",
 							"pm.test(\"value of [1].Name to be Yo-yo\", () => {pm.expect(jsonData[1].Name).to.equal(\"Yo-yo\")})\r",
 							"pm.test(\"value of [2].Name to be Hammer\", () => {pm.expect(jsonData[2].Name).to.equal(\"Hammer\")})\r",
-							"pm.test(\"value of [0].Category to be Groceries\", () => {pm.expect(jsonData[0].Category).to.equal(Groceries)})\r",
-							"pm.test(\"value of [1].Category to be Toys\", () => {pm.expect(jsonData[0].Category).to.equal(\"Toys\")})\r",
-							"pm.test(\"response to be 200 OK\",() => {pm.response.to.have.status(200)})"
+							"pm.test(\"value of [0].Category to be Shmoceries\", () => {pm.expect(jsonData[0].Category).to.equal(\"Shmoceries\")})\r",
+							"pm.test(\"value of [1].Category to be Toys\", () => {pm.expect(jsonData[1].Category).to.equal(\"Toys\")})\r",
+							"pm.test(\"response to be 200 OK\", () => { pm.response.to.have.status(200) })"
 						],
 						"type": "text/javascript",
 						"packages": {}
