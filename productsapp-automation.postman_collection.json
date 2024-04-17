@@ -55,10 +55,22 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"value of [0].Id to be 1\", () => {pm.expect(jsonData[0].Id).to.equal(1)})\r",
-							"pm.test(\"value of [1].Id to be 2\", () => {pm.expect(jsonData[1].Id).to.equal(2)})\r",
-							"pm.test(\"value of [2].Id to be 3\", () => {pm.expect(jsonData[2].Id).to.equal(3)})\r",
-							"pm.test(\"response to be 200 OK\",() => {pm.response.to.have.status(200)})"
+							"var jsonData = pm.response.json();\r",
+							"pm.test(\"value of Id to be 2\", () => {pm.expect(jsonData.Id).to.equal(2)});\r",
+							"pm.test(\"value of Category to be Toys\", () => {pm.expect(jsonData.Category).to.equal(\"Toys\")});\r",
+							"pm.test(\"value of Name to be Yo-yo\", () => {pm.expect(jsonData.Name).to.equal(\"Yo-yo\")});\r",
+							"pm.test(\"response to be 200\", () => { pm.response.to.have.status(200) });"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							""
 						],
 						"type": "text/javascript",
 						"packages": {}
@@ -69,7 +81,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:56907/api/products/id",
+					"raw": "http://localhost:56907/api/products/Id07?id=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -78,7 +90,13 @@
 					"path": [
 						"api",
 						"products",
-						"id"
+						"Id07"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "2"
+						}
 					]
 				}
 			},
